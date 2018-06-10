@@ -1,0 +1,7 @@
+.DS_Store
+Root/.gradle/
+.metadata
+RemoteSystemsTempFiles/
+Root/*/lib/decrypted/
+Root/*/bin/
+**/build/

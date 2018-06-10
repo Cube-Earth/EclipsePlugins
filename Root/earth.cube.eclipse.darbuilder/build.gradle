@@ -1,0 +1,58 @@
+plugins {
+  id "earth.cube.commons" version "1.0.0"
+  id "earth.cube.github" version "1.0.0"
+}
+
+apply plugin: 'osgi'
+ 
+group = 'earth.cube.eclipse'
+version = '1.0.0'
+
+repositories {
+	mavenLocal()
+	maven { 
+		url "http://repo.maven.apache.org/maven2"
+	}
+  }
+
+
+configurations {
+    compile.exclude group: 'org.eclipse'
+}
+
+ 
+dependencies {
+	compile group: 'org.apache.ant', name: 'ant', version: '1.10.3'
+	compile group: 'org.eclipse.core', name: 'runtime', version: '3.10.0-v20140318-2214'
+	
+	compile group: 'org.eclipse.equinox', name: 'app', version: '1.3.200-v20130910-1609'
+	compile group: 'org.osgi', name: 'org.osgi.core', version: '6.0.0'
+	compile group: 'org.eclipse.core', name: 'runtime', version: '3.10.0-v20140318-2214'
+	compile group: 'org.eclipse.core', name: 'resources', version: '3.3.0-v20070604'
+}
+
+jar {
+ 	manifest {
+	    name = 'Eclipse headless builder'
+//	    baseName = "earth.cube.eclipse.darbuilder"
+    	symbolicName = name + ";singleton:=true" // name
+    	instruction 'Bundle-Vendor', 'cube.earth'
+    	instruction 'Bundle-Description', 'Eclipse application for building projects in headless mode'
+    	instruction 'Bundle-DocURL', 'http://cube.earth'
+	}
+}
+
+ext.lib_passphrase = lib_passphrase_default
+
+github {
+	password = github_pwd
+	
+	release {
+		tagName = "1.0"
+		description = "Eclipse plugins"
+	}
+
+	asset {
+		overwrite = true
+	}
+}
