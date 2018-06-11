@@ -1,4 +1,4 @@
-package earth.cube.eclipse.headless_builder;
+package earth.cube.eclipse.darbuilder;
 
 import java.io.File;
 import java.io.FileFilter;

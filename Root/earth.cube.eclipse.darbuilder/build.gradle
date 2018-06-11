@@ -35,7 +35,7 @@ jar {
  	manifest {
 	    name = 'Eclipse headless builder'
 //	    baseName = "earth.cube.eclipse.darbuilder"
-    	symbolicName = name + ";singleton:=true" // name
+    	symbolicName = project.name + ";singleton:=true" // name
     	instruction 'Bundle-Vendor', 'cube.earth'
     	instruction 'Bundle-Description', 'Eclipse application for building projects in headless mode'
     	instruction 'Bundle-DocURL', 'http://cube.earth'

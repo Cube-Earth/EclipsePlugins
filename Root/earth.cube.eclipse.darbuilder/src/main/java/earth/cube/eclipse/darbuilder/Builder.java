@@ -1,4 +1,4 @@
-package earth.cube.eclipse.headless_builder;
+package earth.cube.eclipse.darbuilder;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -18,10 +18,10 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 
 import com.emc.ide.project.IDmProjectFactory;
 
-public class HeadlessBuilderPlugin {
+public class Builder {
 	
-	private File _projectsDir = new File("C:/Projects/DrPfleger/code2/D2-Applications/Composer");
-	private File _outputDir = new File("C:/Temp/composer_test/dar");
+	private File _projectsDir;
+	private File _outputDir;
 	private Set<DmProject> _allProjects = new HashSet<>();
 	private List<DmProject> _projects = new ArrayList<>();
 	private boolean _bHasCore;
@@ -65,7 +65,7 @@ public class HeadlessBuilderPlugin {
 		}
 	}
 	
-	private String join(Collection<String> c, char d) {
+	protected String join(Collection<String> c, char d) {
 		StringBuilder sb = new StringBuilder();
 		boolean bFirst = true;
 		for(String s : c) {
@@ -119,10 +119,7 @@ public class HeadlessBuilderPlugin {
 		return bCurrAutoBuild;
 	}
 	
-	@SuppressWarnings("deprecation")
 	private void createCoreProject() throws CoreException {
-//		IDmProjectFactory.INSTANCE.createDefaultCoreProject(new NullProgressMonitor());
-		
 		IDmProjectFactory.INSTANCE.createRequiredCoreProjects(new NullProgressMonitor());
 	}
 

@@ -1,4 +1,4 @@
-package earth.cube.eclipse.headless_builder;
+package earth.cube.eclipse.darbuilder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class Application implements IApplication {
 			args.put(sName.substring(1), saArgs[i+1]);
 		}
 
-		HeadlessBuilderPlugin builder = new HeadlessBuilderPlugin();
+		Builder builder = new Builder();
 		builder.setProjectsDir(args.get("projectsDir"));
 		builder.setOutputDir(args.get("outputDir")); builder.execute();
 		return EXIT_OK;
